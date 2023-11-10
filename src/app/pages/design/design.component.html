@@ -1,0 +1,30 @@
+<div class="cadastro-container" *ngIf="!reportUrl">
+  <div class="form-content">
+    <h2>Design de Relatório</h2>
+    <p>
+      Selecione um relatório da lista para carregar no Designer.
+    </p>
+    <form [formGroup]="form" (ngSubmit)="abrirDesigner()">
+      <div class="input-group">
+        <label for="report">Nome do relatório</label>
+        <select id="report" formControlName="report" class="custom-input">
+          <option value="">Selecione um relatório</option>
+          <option *ngFor="let item of reportItems" [value]="item.name">{{ item.name }}</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="nav-btn">Carregar Designer</button>
+        <button type="button" (click)="voltar()" class="nav-btn-back">Voltar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<dx-report-designer *ngIf="reportUrl" [reportUrl]="reportUrl" class="dev-express-wrapper">
+  <dxrd-request-options [getDesignerModelAction]="'/DXXRD/GetDesignerModel'" [host]="host"></dxrd-request-options>
+</dx-report-designer>
+
+<div class="actions">
+  <button *ngIf="reportUrl" type="button" (click)="voltar()" class="nav-btn-back">Voltar</button>
+</div>

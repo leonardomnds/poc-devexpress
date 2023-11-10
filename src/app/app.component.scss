@@ -1,0 +1,67 @@
+main {
+  padding: 16px;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .tela {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    &.cadastro {
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        width: 100%;
+        max-width: 600px;
+
+        .actions {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+      }
+    }
+
+    &.preview,
+    &.designer {
+      flex-direction: column;
+      align-items: center;
+      justify-content: unset;
+      gap: 16px;
+
+      form {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+      }
+
+      .dev-express-wrapper {
+        flex: 1;
+        border: 1px solid gray;
+        width: 100%;
+
+        .dx-designer {
+          height: 100% !important;
+        }
+      }
+    }
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+  }
+}
