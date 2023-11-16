@@ -36,7 +36,6 @@ export class PreviewComponent implements OnInit {
   abrirPreview() {
     if (this.form.valid) {
       this.reportUrl = this.form.value.report;
-      console.log(this.reportUrl);
     }
   }
 

@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   devexpress: 'https://localhost:7086',
   api: 'https://localhost:7086/',
-  backoffice: 'http://api.backoffice.dev.eugestor.insidesistemas.com.br/api'
+  backoffice: 'https://localhost:7086/api'
 };
 
 /*

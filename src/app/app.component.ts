@@ -38,7 +38,6 @@ export class AppComponent {
   ) {
     this.form = this.fb.group({ report: [''], sql: [''], tituloRelatorio: [''] });
     const savedForm = this.localStorageService.get('form');
-    if (savedForm) { this.form.patchValue(JSON.parse(savedForm)); }
   }
 
   get telaAtual() {
@@ -51,8 +50,7 @@ export class AppComponent {
   }
 
   criarRelatorio() {
-    const { report, sql, tituloRelatorio } = this.form.value;
-    console.log(this.form.value);
+    const { report, tituloRelatorio } = this.form.value;
     this.relatorioService
       .salvarRelatorio(report, tituloRelatorio)
       .pipe(take(1))

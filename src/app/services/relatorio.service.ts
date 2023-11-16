@@ -12,25 +12,25 @@ export class RelatorioService {
   constructor(private http: HttpClient) { }
 
   getRelatorios(): Observable<any> {
-    return this.http.get(this.urlbase + 'ReportItems');
+    return this.http.get(this.urlbase + 'report-items');
   }
 
   getRelatorio(id: number): Observable<any> {
-    return this.http.get(this.urlbase + `ReportItems/${id}`);
+    return this.http.get(this.urlbase + `report-items/${id}`);
   }
 
   updateRelatorio(id: number, reportItem: any): Observable<any> {
-    return this.http.put(this.urlbase + `ReportItems/${id}`, reportItem);
+    return this.http.put(this.urlbase + `report-items/${id}`, reportItem);
   }
 
   salvarRelatorio(nome: string, tituloRelatorio: string): Observable<any> {
-    return this.http.post(this.urlbase + 'ReportItems', {
+    return this.http.post(this.urlbase + 'report-items', {
       name: nome,
       DisplayName: tituloRelatorio
     });
   }
 
   deleteRelatorio(id: number): Observable<any> {
-    return this.http.delete(this.urlbase + `ReportItems/${id}`);
+    return this.http.delete(this.urlbase + `report-items/${id}`);
   }
 }
