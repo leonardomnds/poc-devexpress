@@ -9,7 +9,6 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class AuthenticationService {
 
-  private _token?: string;
   readonly loginUrl = environment.backoffice + '/auth';
 
   constructor(
@@ -27,11 +26,10 @@ export class AuthenticationService {
   }
 
   getToken() {
-    return this._token;
+    return this.localStorageService.get('token');
   }
 
   setToken(token: string): void {
-    this._token = token;
     this.localStorageService.set('token', token);
   }
 }
