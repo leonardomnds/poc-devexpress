@@ -22,6 +22,7 @@ export class CadastroComponent {
     this.form = this.fb.group({
       report: [''],
       tituloRelatorio: [''],
+      tenant: [''],
     });
 
     const savedForm = window.localStorage.getItem('devexpress@form');
@@ -32,8 +33,9 @@ export class CadastroComponent {
 
   criarRelatorio() {
     if (this.form.valid) {
-      const { report, tituloRelatorio } = this.form.value;
-      this.relatorioService.salvarRelatorio(report, tituloRelatorio)
+      console.log(this.form.value);
+      const { report, tituloRelatorio, tenant } = this.form.value;
+      this.relatorioService.salvarRelatorio(report, tituloRelatorio, tenant)
         .pipe(take(1))
         .subscribe({
           next: () => {

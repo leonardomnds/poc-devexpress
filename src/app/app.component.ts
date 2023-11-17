@@ -50,9 +50,9 @@ export class AppComponent {
   }
 
   criarRelatorio() {
-    const { report, tituloRelatorio } = this.form.value;
+    const { report, tituloRelatorio, tenant } = this.form.value;
     this.relatorioService
-      .salvarRelatorio(report, tituloRelatorio)
+      .salvarRelatorio(report, tituloRelatorio, tenant)
       .pipe(take(1))
       .subscribe(() => {
         this.telaAtual = Tela.Designer;
