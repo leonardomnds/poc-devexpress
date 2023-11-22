@@ -9,7 +9,7 @@
         <label for="report">Nome do relatório</label>
         <select id="report" formControlName="report" class="custom-input">
           <option value="">Selecione um relatório</option>
-          <option *ngFor="let item of reportItems.lista" [value]="item.nome">{{ item.nome }}</option>
+          <option *ngFor="let item of reportItems.lista" [value]="item.relatorioId">{{ item.nome }}</option>
         </select>
       </div>
 

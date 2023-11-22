@@ -1,0 +1,35 @@
+<div class="cadastro-container">
+    <div *ngIf="!exibirInputVinculo" class="form-content">
+        <div class="actions">
+            <button class="nav-btn" (click)="vincularNovaTenant()">Vincular Nova Tenant</button>
+            <button class="nav-btn nav-btn-back" (click)="voltar()">Voltar</button>
+        </div>
+
+        <div *ngIf="tenants && tenants.length > 0; else noData">
+            <ul class="report-list">
+                <li *ngFor="let tenant of tenants">
+                    <div class="report-item">
+                        <span>{{ tenant.tenant }}</span>
+                        <div class="actions">
+                            <button class="nav-btn nav-btn-back2"
+                                (click)="selecionarParaDesvinculo(tenant.id)">❌</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ng-template #noData>
+            <div class="info-text">
+                <p>Nenhum tenant encontrado.</p>
+            </div>
+        </ng-template>
+    </div>
+
+    <div *ngIf="exibirInputVinculo" class="input-group">
+        <input type="text" [(ngModel)]="novaTenant" placeholder="Digite o nome da nova tenant" class="custom-input">
+        <div class="actions">
+            <button class="nav-btn" (click)="vincular()">Vincular</button>
+            <button class="nav-btn nav-btn-back" (click)="voltarVinculo()">Voltar</button>
+        </div>
+    </div>
+</div>

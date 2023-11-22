@@ -6,6 +6,8 @@ import { PreviewComponent } from './pages/preview/preview.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ListagemComponent } from './pages/listagem/listagem.component';
+import { VinculoTenantComponent } from './pages/vinculo-tenant/vinculo-tenant.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'cadastro', component: CadastroComponent, canActivate: [AuthGuard]},
   { path: 'design', component: DesignComponent, canActivate: [AuthGuard]},
   { path: 'preview', component: PreviewComponent, canActivate: [AuthGuard]},
+  { path: 'listagem', component: ListagemComponent, canActivate: [AuthGuard]},
+  { path: 'vinculo-tenant/:id', component: VinculoTenantComponent, canActivate: [AuthGuard]},
   { path: '**', component: HomeComponent, canActivate: [AuthGuard]},
 ];
 

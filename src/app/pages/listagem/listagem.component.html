@@ -1,0 +1,36 @@
+<div class="cadastro-container">
+    <div class="form-content">
+        <form (submit)="pesquisarPorTenant()">
+            <div class="input-group">
+                <label for="tenantInput">Pesquisar por Tenant</label>
+                <input type="text" class="custom-input" id="tenantInput" [(ngModel)]="tenantPesquisa" name="tenant" placeholder="Digite o tenant">
+            </div>
+            <div class="actions">
+                <button type="submit" class="nav-btn">Pesquisar</button>
+                <button class="nav-btn nav-btn-back" (click)="voltar()">Voltar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-content" *ngIf="reportItems && reportItems.length > 0; else noData">
+        <ul class="report-list">
+            <li>
+                <div class="report-item">
+                    <span>Nome</span>
+                    <span>Descrição</span>
+                </div>
+            </li>
+            <li *ngFor="let item of reportItems" (click)="selecionarRelatorio(item.relatorioId)">
+                <div class="report-item">
+                    <span>{{ item.nome }}</span>
+                    <span>{{ item.descricao }}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ng-template #noData>
+        <div class="info-text">
+            <p>Nenhum relatório encontrado.</p>
+        </div>
+    </ng-template>
+</div>

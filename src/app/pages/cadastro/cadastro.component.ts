@@ -33,7 +33,6 @@ export class CadastroComponent {
 
   criarRelatorio() {
     if (this.form.valid) {
-      console.log(this.form.value);
       const { report, tituloRelatorio, tenant } = this.form.value;
       this.relatorioService.salvarRelatorio(report, tituloRelatorio, tenant)
         .pipe(take(1))

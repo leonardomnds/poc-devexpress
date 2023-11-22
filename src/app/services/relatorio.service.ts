@@ -15,6 +15,10 @@ export class RelatorioService {
     return this.http.get(this.urlbase + 'relatorios?ExibirInativos=true&OrdenarPor=nome');
   }
 
+  getRelatoriosPorTenant(tenant: string): Observable<any> {
+    return this.http.get(this.urlbase + 'relatorios/tenant?ExibirInativos=false&OrdenarPor=nome&Tenant=' + tenant);
+  }
+
   getRelatorio(id: number): Observable<any> {
     return this.http.get(this.urlbase + `relatorios/${id}`);
   }
@@ -24,6 +28,19 @@ export class RelatorioService {
       nome,
       descricao,
       tenant: tenant
+    });
+  }
+
+  vincularTenantRelatorio(relatorioId: number, tenant: string): Observable<any> {
+    return this.http.put(this.urlbase + 'relatorios/vincular-tenant', {
+      relatorioId,
+      tenant
+    });
+  }
+
+  desvincularTenantRelatorio(relatorioId: number): Observable<any> {
+    return this.http.put(this.urlbase + 'relatorios/desvincular-tenant', {
+      relatorioId
     });
   }
 }

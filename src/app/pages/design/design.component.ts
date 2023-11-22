@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class DesignComponent implements OnInit {
   host = environment.devexpress;
   form: FormGroup;
-  reportUrl: string;
+  reportUrl: number;
   reportItems: any[];
   showDesigner: boolean = false;
 
@@ -29,7 +29,7 @@ export class DesignComponent implements OnInit {
 
   ngOnInit(): void {
     this.relatorioService.getRelatorios().subscribe(items => {
-      this.reportItems = items;
+      this.reportItems = items.data;
     });
   }
 

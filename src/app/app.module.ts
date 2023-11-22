@@ -14,6 +14,8 @@ import { ToastComponent } from './components/toast/toast.component';
 import { LoginComponent } from './pages/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { ListagemComponent } from './pages/listagem/listagem.component';
+import { VinculoTenantComponent } from './pages/vinculo-tenant/vinculo-tenant.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     PreviewComponent,
     DesignComponent,
     ToastComponent,
-    LoginComponent
+    LoginComponent,
+    ListagemComponent,
+    VinculoTenantComponent
   ],
   imports: [
     AppRoutingModule,

@@ -15,7 +15,10 @@ export class PreviewComponent implements OnInit {
   endpoint = '/DXXRDV';
   form: FormGroup;
   reportItems: any[];
-  reportUrl: string;
+  reportUrl: number;
+  tenants: any[];
+  selectedTenant: string;
+  idTenant: number;
 
   constructor(
     private fb: FormBuilder,
@@ -23,23 +26,45 @@ export class PreviewComponent implements OnInit {
     private relatorioService: RelatorioService
     ) {
     this.form = this.fb.group({
-      report: ['']
+      report: [''],
+      tenant: ['']
     });
   }
 
   ngOnInit(): void {
     this.relatorioService.getRelatorios().subscribe(items => {
-      this.reportItems = items;
+      this.reportItems = items.data.lista;
     });
   }
 
   abrirPreview() {
     if (this.form.valid) {
-      this.reportUrl = this.form.value.report;
+      this.reportUrl = this.form.value.tenant;
     }
+  }
+
+  onReportChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const reportName = selectElement.value;
+    const selectedReport = this.reportItems.find(item => item.nome === reportName);
+    
+    if (selectedReport) {
+      this.tenants = selectedReport.relatorioTenants;
+      this.form.controls['tenant'].setValue(''); // Reset o campo tenant
+    } else {
+      this.tenants = [];
+    }
+  }
+
+  selecionarTenant() {
+    this.selectedTenant = this.form.value.tenant;
   }
 
   voltar(): void {
     this.router.navigate(['/']);
+  }
+
+  voltarPreview(): void {
+    this.reportUrl = null;
   }
 }
