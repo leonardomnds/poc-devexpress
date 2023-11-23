@@ -1,8 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import 'devexpress-reporting/dx-richedit';
-import { RelatorioService } from './services/relatorio.service';
-import { take } from 'rxjs';
+import { fetchSetup } from '@devexpress/analytics-core/analytics-utils';
 import { LocalStorageService } from './services/local-storage.service';
 
 @Component({
@@ -21,64 +19,15 @@ import { LocalStorageService } from './services/local-storage.service';
   ]
 })
 export class AppComponent {
-  host = 'https://localhost:7086';
-  endpoint = '/DXXRDV';
 
-  Tela = Tela;
-  private _telaAtual = Tela.Preview;
-
-  form: FormGroup;
-  reportNameForPreview: string;
-  reportNameForDesigner: string;
-
-  constructor(
-    private fb: FormBuilder,
-    private relatorioService: RelatorioService,
-    private localStorageService: LocalStorageService
-  ) {
-    this.form = this.fb.group({ report: [''], sql: [''], tituloRelatorio: [''] });
-    const savedForm = this.localStorageService.get('form');
+  constructor(private localStorageService: LocalStorageService) {
+    this.addAuthToDevexpress();
   }
 
-  get telaAtual() {
-    return this._telaAtual;
-  }
+  private addAuthToDevexpress(): void {
+    const token = this.localStorageService.get('token');
 
-  set telaAtual(tela: Tela) {
-    this._telaAtual = tela;
-    this.reportNameForPreview = this.reportNameForDesigner = '';
+    if (!token) { return; }
+    fetchSetup.fetchSettings = { headers: { Authorization: `Bearer ${token}` } };
   }
-
-  criarRelatorio() {
-    const { report, tituloRelatorio, tenant } = this.form.value;
-    this.relatorioService
-      .salvarRelatorio(report, tituloRelatorio, tenant)
-      .pipe(take(1))
-      .subscribe(() => {
-        this.telaAtual = Tela.Designer;
-        this.abrirPreview();
-      });
-  }
-
-  abrirPreview() {
-    this.salvarCampos();
-    this.telaAtual = Tela.Preview;
-    this.reportNameForPreview = this.form.value.report;
-  }
-
-  abrirDesigner() {
-    this.salvarCampos();
-    this.reportNameForDesigner = this.form.value.report;
-  }
-
-  private salvarCampos(): void {
-    this.localStorageService.set('form', this.form.value);
-  }
-}
-
-enum Tela {
-  Principal = 'principal',
-  Cadastro = 'cadastro',
-  Designer = 'designer',
-  Preview = 'preview',
 }

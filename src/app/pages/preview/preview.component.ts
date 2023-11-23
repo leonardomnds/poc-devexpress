@@ -15,7 +15,7 @@ export class PreviewComponent implements OnInit {
   endpoint = '/DXXRDV';
   form: FormGroup;
   reportItems: any[];
-  reportUrl: number;
+  reportUrl: number = 1;
   tenants: any[];
   selectedTenant: string;
   idTenant: number;
@@ -47,7 +47,7 @@ export class PreviewComponent implements OnInit {
     const selectElement = event.target as HTMLSelectElement;
     const reportName = selectElement.value;
     const selectedReport = this.reportItems.find(item => item.nome === reportName);
-    
+
     if (selectedReport) {
       this.tenants = selectedReport.relatorioTenants;
       this.form.controls['tenant'].setValue(''); // Reset o campo tenant

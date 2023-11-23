@@ -3,9 +3,9 @@ const API_DOMAIN = '309c-177-66-108-187.ngrok-free.app';
 export const environment = {
   production: false,
   domain: API_DOMAIN,
-  devexpress: `http://${API_DOMAIN}`,
-  api: `http://${API_DOMAIN}/`,
-  backoffice: `http://${API_DOMAIN}/api`
+  devexpress: `https://${API_DOMAIN}`,
+  api: `https://${API_DOMAIN}/`,
+  backoffice: `https://${API_DOMAIN}/api`
 };
 
 /*
