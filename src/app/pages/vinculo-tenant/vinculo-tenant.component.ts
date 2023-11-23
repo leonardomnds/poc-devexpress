@@ -48,8 +48,8 @@ export class VinculoTenantComponent implements OnInit {
     this.novaTenant = '';
   }
 
-  selecionarParaDesvinculo(relatorioId: number): void {
-    this.relatorioService.desvincularTenantRelatorio(this.relatorioId).subscribe(() => {
+  selecionarParaDesvinculo(relatorioTenantId: number): void {
+    this.relatorioService.desvincularTenantRelatorio(relatorioTenantId).subscribe(() => {
       this.carregarTenants();
     });
   }

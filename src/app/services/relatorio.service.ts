@@ -38,9 +38,9 @@ export class RelatorioService {
     });
   }
 
-  desvincularTenantRelatorio(relatorioId: number): Observable<any> {
+  desvincularTenantRelatorio(relatorioTenantId: number): Observable<any> {
     return this.http.put(this.urlbase + 'relatorios/desvincular-tenant', {
-      relatorioId
+      relatorioTenantId
     });
   }
 }
