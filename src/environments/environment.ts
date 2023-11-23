@@ -1,12 +1,11 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+const API_DOMAIN = '309c-177-66-108-187.ngrok-free.app';
 
 export const environment = {
   production: false,
-  devexpress: 'https://localhost:7086',
-  api: 'https://localhost:7086/',
-  backoffice: 'https://localhost:7086/api'
+  domain: API_DOMAIN,
+  devexpress: API_DOMAIN,
+  api: `${API_DOMAIN}/`,
+  backoffice: `${API_DOMAIN}/api`
 };
 
 /*

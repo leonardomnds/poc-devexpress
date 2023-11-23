@@ -16,6 +16,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { ListagemComponent } from './pages/listagem/listagem.component';
 import { VinculoTenantComponent } from './pages/vinculo-tenant/vinculo-tenant.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { VinculoTenantComponent } from './pages/vinculo-tenant/vinculo-tenant.co
         headerName: 'Authorization',
         authScheme: 'Bearer ',
         tokenGetter: getAuthToken,
+        allowedDomains: [environment.domain]
       }
     }),
   ],
