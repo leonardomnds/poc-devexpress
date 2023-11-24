@@ -1,4 +1,4 @@
-const API_DOMAIN = '309c-177-66-108-187.ngrok-free.app';
+const API_DOMAIN = 'localhost:7086';
 
 export const environment = {
   production: false,
