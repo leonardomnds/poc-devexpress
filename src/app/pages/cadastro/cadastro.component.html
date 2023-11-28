@@ -16,6 +16,14 @@
 
         <label for="tituloRelatorio">Tenant</label>
         <input type="text" id="tenant" formControlName="tenant" class="custom-input">
+
+        <div class="input-group">
+          <label for="report">Grupo do relatório</label>
+          <select id="report" formControlName="grupoRelatorioId" class="custom-input">
+            <option value="">Selecione um grupo</option>
+            <option *ngFor="let item of grupos" [value]="item.grupoRelatorioId">{{ item.descricao }}</option>
+          </select>
+        </div>
       </div>
 
       <div class="actions">

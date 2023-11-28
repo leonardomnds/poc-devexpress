@@ -3,7 +3,8 @@
         <form (submit)="pesquisarPorTenant()">
             <div class="input-group">
                 <label for="tenantInput">Pesquisar por Tenant</label>
-                <input type="text" class="custom-input" id="tenantInput" [(ngModel)]="tenantPesquisa" name="tenant" placeholder="Digite o tenant">
+                <input type="text" class="custom-input" id="tenantInput" [(ngModel)]="tenantPesquisa" name="tenant"
+                    placeholder="Digite o tenant">
             </div>
             <div class="actions">
                 <button type="submit" class="nav-btn">Pesquisar</button>
@@ -12,21 +13,26 @@
         </form>
     </div>
 
-    <div class="form-content" *ngIf="reportItems && reportItems.length > 0; else noData">
-        <ul class="report-list">
-            <li>
-                <div class="report-item">
-                    <span>Nome</span>
-                    <span>Descrição</span>
+    <div class="form-content">
+        <ng-container *ngIf="gruposRelatorios && gruposRelatorios.length > 0">
+            <ul class="report-list">
+                <li>
+                    <div class="report-item">
+                        <span>Nome</span>
+                        <span>Descrição</span>
+                    </div>
+                </li>
+                <div *ngFor="let grupoRelatorio of gruposRelatorios">
+                    <span>{{ grupoRelatorio.descricao }}</span>
+                    <li *ngFor="let item of grupoRelatorio.relatorios" (click)="selecionarRelatorio(item.relatorioId)">
+                        <div class="report-item">
+                            <span>{{ item.nome }}</span>
+                            <span>{{ item.descricao }}</span>
+                        </div>
+                    </li>
                 </div>
-            </li>
-            <li *ngFor="let item of reportItems" (click)="selecionarRelatorio(item.relatorioId)">
-                <div class="report-item">
-                    <span>{{ item.nome }}</span>
-                    <span>{{ item.descricao }}</span>
-                </div>
-            </li>
-        </ul>
+            </ul>
+        </ng-container>
     </div>
     <ng-template #noData>
         <div class="info-text">

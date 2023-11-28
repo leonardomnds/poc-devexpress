@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GrupoService } from 'src/app/services/grupo.service';
 import { RelatorioService } from 'src/app/services/relatorio.service';
 
 @Component({
@@ -9,21 +10,22 @@ import { RelatorioService } from 'src/app/services/relatorio.service';
 })
 export class ListagemComponent implements OnInit {
   tenantPesquisa: string = '';
-  reportItems: any[];
+  gruposRelatorios: any[];
 
   constructor(
     private router: Router,
-    private relatorioService: RelatorioService) { }
+    private relatorioService: RelatorioService,
+    private grupoRelatorioService: GrupoService) { }
 
   ngOnInit(): void {
-    this.relatorioService.getRelatorios().subscribe(items => {
-      this.reportItems = items.data.lista;
+    this.grupoRelatorioService.getRelatoriosRelatorios().subscribe(items => {
+      this.gruposRelatorios = items.data;
     });
   }
 
   pesquisarPorTenant(): void {
     this.relatorioService.getRelatoriosPorTenant(this.tenantPesquisa).subscribe(items => {
-        this.reportItems = items.data.lista;
+        this.gruposRelatorios = items.data.lista;
     });
   }
 

@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { take } from 'rxjs';
 import { RelatorioService } from '../../services/relatorio.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/components/toast.service';
+import { GrupoService } from 'src/app/services/grupo.service';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss']
 })
-export class CadastroComponent {
+export class CadastroComponent implements OnInit{
   form: FormGroup;
+
+  grupos: any;
 
   constructor(
     private fb: FormBuilder,
     private relatorioService: RelatorioService,
+    private grupoService: GrupoService,
     private router: Router,
     private toastService: ToastService
   ) {
@@ -23,6 +27,7 @@ export class CadastroComponent {
       report: [''],
       tituloRelatorio: [''],
       tenant: [''],
+      grupoRelatorioId: null
     });
 
     const savedForm = window.localStorage.getItem('devexpress@form');
@@ -31,10 +36,16 @@ export class CadastroComponent {
     }
   }
 
+  ngOnInit(): void {
+    this.grupoService.getRelatorios().subscribe(items => {
+      this.grupos = items.data;
+    });
+  }
+
   criarRelatorio() {
     if (this.form.valid) {
-      const { report, tituloRelatorio, tenant } = this.form.value;
-      this.relatorioService.salvarRelatorio(report, tituloRelatorio, tenant)
+      const { report, tituloRelatorio, tenant, grupoRelatorioId } = this.form.value;
+      this.relatorioService.salvarRelatorio(report, tituloRelatorio, tenant, grupoRelatorioId)
         .pipe(take(1))
         .subscribe({
           next: () => {

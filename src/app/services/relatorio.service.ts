@@ -23,11 +23,12 @@ export class RelatorioService {
     return this.http.get(this.urlbase + `relatorios/${id}`);
   }
 
-  salvarRelatorio(nome: string, descricao: string, tenant: string): Observable<any> {
+  salvarRelatorio(nome: string, descricao: string, tenant: string, grupoRelatorioId: number): Observable<any> {
     return this.http.post(this.urlbase + 'relatorios', {
       nome,
       descricao,
-      tenant: tenant
+      tenant,
+      grupoRelatorioId
     });
   }
 

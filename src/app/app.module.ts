@@ -17,6 +17,7 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { ListagemComponent } from './pages/listagem/listagem.component';
 import { VinculoTenantComponent } from './pages/vinculo-tenant/vinculo-tenant.component';
 import { environment } from 'src/environments/environment';
+import { GrupoCadastroComponent } from './pages/grupo-cadastro/grupo-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { environment } from 'src/environments/environment';
     ToastComponent,
     LoginComponent,
     ListagemComponent,
-    VinculoTenantComponent
+    VinculoTenantComponent,
+    GrupoCadastroComponent
   ],
   imports: [
     AppRoutingModule,

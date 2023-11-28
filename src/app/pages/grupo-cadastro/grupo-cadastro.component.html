@@ -1,0 +1,25 @@
+<div class="cadastro-container">
+    <div class="form-content">
+        <h2>Cadastro de Grupo Relatório</h2>
+        <p>
+            Utilize este formulário para salvar a configuração de um novo grupo relatório.
+            Você pode especificar um título, o nome do relatório e a consulta SQL necessária.
+            Essas informações são importantes para gerar relatórios dinâmicos no DevExpress.
+        </p>
+        <form [formGroup]="form" (ngSubmit)="criarRelatorio()">
+            <div class="input-group">
+                <label for="descricao">Nome do grupo</label>
+                <input type="text" id="report" formControlName="descricao" class="custom-input">
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="nav-btn">Salvar</button>
+                <button type="button" (click)="voltar()" class="nav-btn-back">Voltar</button>
+            </div>
+        </form>
+        <div class="info-text">
+            <p>Salvar um cadastro de grupo relatório permite a geração de documentos e análises personalizadas com o
+                DevExpress.</p>
+        </div>
+    </div>
+</div>
