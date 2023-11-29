@@ -1,0 +1,27 @@
+<div class="cadastro-container">
+    <div class="form-content" *ngIf="!reportUrl">
+      <h2>Preview de Relatório</h2>
+      <form [formGroup]="form" (ngSubmit)="abrirPreview()">
+        <div class="input-group">
+          <label for="report">Nome do relatório</label>
+          <select id="report" formControlName="report" class="custom-input" (change)="onReportChange($event)">
+            <option value="">Selecione um relatório</option>
+            <option *ngFor="let item of reportItems" [value]="item.nome">{{ item.nome }}</option>
+          </select>
+        </div>
+  
+        <div class="actions">
+          <button type="submit" class="nav-btn">Carregar Preview</button>
+          <button type="button" (click)="voltar()" class="nav-btn-back">Voltar</button>
+        </div>
+      </form>
+    </div>
+  
+    <dx-report-viewer *ngIf="reportUrl" [reportUrl]="reportUrl" class="dev-express-wrapper">
+      <dxrv-request-options [invokeAction]="endpoint" [host]="host"></dxrv-request-options>
+    </dx-report-viewer>
+  </div>
+  
+  <div class="actions">
+    <button *ngIf="reportUrl" type="button" (click)="voltarPreview()" class="nav-btn-back">Voltar</button>
+  </div>

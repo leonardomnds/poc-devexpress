@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import 'devexpress-reporting/dx-reportdesigner';
 import { RelatorioService } from '../../services/relatorio.service';
 import { environment } from 'src/environments/environment';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-design',
@@ -13,7 +14,7 @@ import { environment } from 'src/environments/environment';
 export class DesignComponent implements OnInit {
   host = environment.devexpress;
   form: FormGroup;
-  reportUrl: number;
+  reportUrl: string;
   reportItems: any[];
   showDesigner: boolean = false;
 
@@ -35,7 +36,11 @@ export class DesignComponent implements OnInit {
 
   abrirDesigner() {
     if (this.form.valid) {
-      this.reportUrl = this.form.value.report;
+      let params = new HttpParams()
+      .set('IsDesign', 'true')
+      .set('IsSuporte', 'true')
+      .set('id', this.form.value.report.toString());
+      this.reportUrl = params.toString();
       this.showDesigner = true;
     }
   }

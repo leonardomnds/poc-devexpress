@@ -5,6 +5,7 @@ import { RelatorioService } from '../../services/relatorio.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/components/toast.service';
 import { GrupoService } from 'src/app/services/grupo.service';
+import { ContaService } from 'src/app/services/conta.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -16,17 +17,20 @@ export class CadastroComponent implements OnInit{
 
   grupos: any;
 
+  contas: any;
+
   constructor(
     private fb: FormBuilder,
     private relatorioService: RelatorioService,
     private grupoService: GrupoService,
+    private contaService: ContaService,
     private router: Router,
     private toastService: ToastService
   ) {
     this.form = this.fb.group({
       report: [''],
       tituloRelatorio: [''],
-      tenant: [''],
+      tenant: null,
       grupoRelatorioId: null
     });
 
@@ -39,6 +43,10 @@ export class CadastroComponent implements OnInit{
   ngOnInit(): void {
     this.grupoService.getRelatorios().subscribe(items => {
       this.grupos = items.data;
+    });
+    
+    this.contaService.getContas().subscribe(items => {
+      this.contas = items.data.lista;
     });
   }
 

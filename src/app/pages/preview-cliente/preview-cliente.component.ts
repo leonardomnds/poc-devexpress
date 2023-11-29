@@ -1,23 +1,22 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import 'devexpress-reporting/dx-webdocumentviewer';
-import { RelatorioService } from '../../services/relatorio.service';
 import { Router } from '@angular/router';
+import { RelatorioService } from 'src/app/services/relatorio.service';
 import { environment } from 'src/environments/environment';
-import { HttpParams } from '@angular/common/http';
 
 @Component({
-  selector: 'app-preview',
-  templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.scss']
+  selector: 'app-preview-cliente',
+  templateUrl: './preview-cliente.component.html',
+  styleUrls: ['./preview-cliente.component.scss']
 })
-export class PreviewComponent implements OnInit {
+export class PreviewClienteComponent implements OnInit {
   host = environment.devexpress;
   endpoint = '/DXXRDV';
   form: FormGroup;
   reportItems: any[];
   reportUrl: string;
-  tenants: any[];
+  idRelatorio: number;
   selectedTenant: string;
   idTenant: number;
 
@@ -41,8 +40,8 @@ export class PreviewComponent implements OnInit {
   abrirPreview() {
     if (this.form.valid) {
       let params = new HttpParams()
-        .set('IsSuporte', 'true') // Definindo IsSuporte como true
-        .set('id', this.form.value.tenant.toString());
+        .set('IsSuporte', 'false')
+        .set('id', this.idRelatorio.toString());
 
         this.reportUrl = params.toString();
     }
@@ -54,10 +53,10 @@ export class PreviewComponent implements OnInit {
     const selectedReport = this.reportItems.find(item => item.nome === reportName);
 
     if (selectedReport) {
-      this.tenants = selectedReport.relatorioTenants;
+      this.idRelatorio = selectedReport.relatorioId;
       this.form.controls['tenant'].setValue('');
     } else {
-      this.tenants = [];
+      this.idRelatorio = null;
     }
   }
 

@@ -26,6 +26,11 @@
     </div>
 
     <div *ngIf="exibirInputVinculo" class="input-group">
+        <div class="input-group">
+            <input type="checkbox" id="toggleTenantSelect" (change)="onCheckboxChange($event)" [(ngModel)]="checkbox">
+            <label for="toggleTenantSelect">Todos os clientes</label>
+        </div>
+        
         <input type="text" [(ngModel)]="novaTenant" placeholder="Digite o nome da nova tenant" class="custom-input">
         <div class="actions">
             <button class="nav-btn" (click)="vincular()">Vincular</button>

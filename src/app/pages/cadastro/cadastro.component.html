@@ -14,8 +14,13 @@
         <label for="tituloRelatorio">Descrição</label>
         <input type="text" id="tituloRelatorio" formControlName="tituloRelatorio" class="custom-input">
 
-        <label for="tituloRelatorio">Tenant</label>
-        <input type="text" id="tenant" formControlName="tenant" class="custom-input">
+        <div class="input-group">
+          <label for="report">Tenant</label>
+          <select id="report" formControlName="tenant" class="custom-input">
+            <option value="">Selecione uma ou mais tenants</option>
+            <option *ngFor="let item of contas" [value]="item.tenant">{{ item.tenant }}</option>
+          </select>
+        </div>
 
         <div class="input-group">
           <label for="report">Grupo do relatório</label>

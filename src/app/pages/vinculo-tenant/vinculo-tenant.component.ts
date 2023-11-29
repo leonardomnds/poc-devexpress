@@ -8,7 +8,7 @@ import { RelatorioService } from 'src/app/services/relatorio.service';
   styleUrls: ['./vinculo-tenant.component.scss']
 })
 export class VinculoTenantComponent implements OnInit {
-
+  checkbox: boolean;
   relatorioId: number;
   tenants: any[] = [];
   exibirInputVinculo: boolean = false;
@@ -24,8 +24,9 @@ export class VinculoTenantComponent implements OnInit {
   }
 
   carregarTenants(): void {
-    this.relatorioService.getRelatorio(this.relatorioId).subscribe(data => {
-      this.tenants = data.data.relatorioTenants;
+    this.relatorioService.getRelatorio(this.relatorioId).subscribe(resultado => {
+      this.tenants = resultado.data.relatorioTenants;
+      this.checkbox = resultado.data.isLiberadoTodas;
     });
   }
 
@@ -52,6 +53,19 @@ export class VinculoTenantComponent implements OnInit {
     this.relatorioService.desvincularTenantRelatorio(relatorioTenantId).subscribe(() => {
       this.carregarTenants();
     });
+  }
+
+  onCheckboxChange($event: any) {
+    const checkbox = $event.target.checked;
+    if (checkbox) {
+      this.relatorioService.liberarRelatorioClientes(this.relatorioId).subscribe(() => {
+        this.checkbox = true;
+      });
+    } else {
+      this.relatorioService.removerLiberacaoRelatorioClientes(this.relatorioId).subscribe(() => {
+        this.checkbox = false;
+      });
+    }
   }
 
   voltar(): void {
