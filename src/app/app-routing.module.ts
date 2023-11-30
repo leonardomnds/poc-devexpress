@@ -9,6 +9,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ListagemComponent } from './pages/listagem/listagem.component';
 import { VinculoTenantComponent } from './pages/vinculo-tenant/vinculo-tenant.component';
 import { GrupoCadastroComponent } from './pages/grupo-cadastro/grupo-cadastro.component';
+import { PreviewClienteComponent } from './pages/preview-cliente/preview-cliente.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'grupo-cadastro', component: GrupoCadastroComponent, canActivate: [AuthGuard]},
   { path: 'design', component: DesignComponent, canActivate: [AuthGuard]},
   { path: 'preview', component: PreviewComponent, canActivate: [AuthGuard]},
+  { path: 'preview-cliente', component: PreviewClienteComponent, canActivate: [AuthGuard]},
   { path: 'listagem', component: ListagemComponent, canActivate: [AuthGuard]},
   { path: 'vinculo-tenant/:id', component: VinculoTenantComponent, canActivate: [AuthGuard]},
   { path: '**', component: HomeComponent, canActivate: [AuthGuard]},

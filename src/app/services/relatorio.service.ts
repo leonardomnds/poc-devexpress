@@ -44,4 +44,16 @@ export class RelatorioService {
       relatorioTenantId
     });
   }
+
+  liberarRelatorioClientes(relatorioId: number): Observable<any> {
+    return this.http.put(this.urlbase + 'relatorios/liberar-todos-clientes', {
+      relatorioId
+    });
+  }
+
+  removerLiberacaoRelatorioClientes(relatorioId: number): Observable<any> {
+    return this.http.put(this.urlbase + 'relatorios/remover-liberacao-todos-clientes', {
+      relatorioId
+    });
+  }
 }
