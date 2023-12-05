@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
+import { fetchSetup } from '@devexpress/analytics-core/analytics-utils';
 import { environment } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -34,7 +35,14 @@ export class AuthenticationService {
   }
 
   getToken() {
-    return this.localStorageService.get('token');
+    const token = this.localStorageService.get('token');
+
+    if (token) {
+      console.log('colocou token')
+      fetchSetup.fetchSettings = { headers: { Authorization: `Bearer ${token}` } };
+    }
+
+    return token;
   }
 
   setToken(token: string): void {
