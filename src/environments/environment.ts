@@ -1,6 +1,6 @@
 const API_DOMAIN = 'localhost:51775';
 const API_DOMAIN_BACKOFFICE = 'localhost:61553';
-const API_DOMAIN_EUGESTOR = 'api.dev.eugestor.insidesistemas.com.br';
+const API_DOMAIN_EUGESTOR = 'localhost:56437';
 
 export const environment = {
   production: false,
