@@ -7,21 +7,20 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class GrupoService {
-  urlbase = environment.api + 'api/';
+
+  readonly path = `${environment.reportsApiUrl}/grupos-relatorios`
 
   constructor(private http: HttpClient) { }
 
   salvarGrupo(descricao: string): Observable<any> {
-    return this.http.post(this.urlbase + 'grupos-relatorios', {
-      descricao,
-    });
+    return this.http.post(this.path, { descricao });
   }
 
   getRelatoriosRelatorios(): Observable<any> {
-    return this.http.get(this.urlbase + 'grupos-relatorios/relatorios?&OrdenarPor=nome');
+    return this.http.get(`${this.path}/relatorios`, { params: { OrdenarPor: 'nome' } });
   }
 
   getRelatorios(): Observable<any> {
-    return this.http.get(this.urlbase + 'grupos-relatorios?&OrdenarPor=nome');
+    return this.http.get(this.path, { params: { OrdenarPor: 'nome' } });
   }
 }

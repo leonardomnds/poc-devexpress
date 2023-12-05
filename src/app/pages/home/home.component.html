@@ -1,8 +1,9 @@
 <div class="home-container">
   <div class="content">
     <h1>Bem-vindo ao EuGestor Report</h1>
-    <p>O DevExpress permite desenvolvedores e equipe de apoio criar experiências de usuário elegantes e interativas. Nossa integração com DevExpress facilita a construção de relatorios complexos e prontos para uso.</p>
-    
+    <p>O DevExpress permite desenvolvedores e equipe de apoio criar experiências de usuário elegantes e interativas.
+      Nossa integração com DevExpress facilita a construção de relatorios complexos e prontos para uso.</p>
+
     <div class="features">
       <div class="feature">
         <h3>Componentes Ricos</h3>
@@ -17,14 +18,20 @@
         <p>Integre-se facilmente com APIs e serviços externos para uma gestão eficaz.</p>
       </div>
     </div>
-    
+
     <div class="navigation-buttons">
-      <button class="nav-btn secondary" routerLink="/listagem">Listagem</button>
-      <button class="nav-btn secondary" routerLink="/cadastro">Cadastro Relatório</button>
-      <button class="nav-btn secondary" routerLink="/grupo-cadastro">Cadastro Grupo</button>
-      <button class="nav-btn secondary" routerLink="/design">Design</button>
-      <button class="nav-btn tertiary" routerLink="/preview">Preview</button>
-      <button class="nav-btn tertiary" routerLink="/preview-cliente">Preview Cliente</button>
+      <button *ngIf="authService.isCliente" class="nav-btn tertiary" routerLink="/preview-cliente">
+        Preview Cliente
+      </button>
+
+      <ng-container *ngIf="authService.isSuporte">
+        <button class="nav-btn secondary" routerLink="/listagem">Listagem</button>
+        <button class="nav-btn secondary" routerLink="/cadastro">Cadastro Relatório</button>
+        <button class="nav-btn secondary" routerLink="/grupo-cadastro">Cadastro Grupo</button>
+        <button class="nav-btn secondary" routerLink="/design">Design</button>
+        <button class="nav-btn tertiary" routerLink="/preview">Preview</button>
+        <button class="nav-btn tertiary" routerLink="/preview-cliente">Preview Cliente</button>
+      </ng-container>
     </div>
   </div>
 </div>

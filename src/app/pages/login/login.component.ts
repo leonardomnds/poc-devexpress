@@ -23,14 +23,19 @@ export class LoginComponent {
     this.form = this.fb.group({
       email: ['', [Validators.required]],
       senha: ['', [Validators.required]],
+      isSuporte: [false]
     })
   }
 
   login() {
     this.isLoading = true;
-    const { email, senha } = this.form.value;
+    const { email, senha, isSuporte } = this.form.value;
 
-    this.authService.login(email, senha)
+    const service = isSuporte
+      ? this.authService.loginSuporte(email, senha)
+      : this.authService.loginCliente(email, senha);
+
+    service
       .pipe(take(1), finalize(() => this.isLoading = false))
       .subscribe({
         next: () => this.router.navigate(['/home']),

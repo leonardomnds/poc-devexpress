@@ -5,7 +5,7 @@ import { DesignComponent } from './pages/design/design.component';
 import { PreviewComponent } from './pages/preview/preview.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard, ClienteGuard, SuporteGuard } from './guards';
 import { ListagemComponent } from './pages/listagem/listagem.component';
 import { VinculoTenantComponent } from './pages/vinculo-tenant/vinculo-tenant.component';
 import { GrupoCadastroComponent } from './pages/grupo-cadastro/grupo-cadastro.component';
@@ -14,13 +14,13 @@ import { PreviewClienteComponent } from './pages/preview-cliente/preview-cliente
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
-  { path: 'cadastro', component: CadastroComponent, canActivate: [AuthGuard]},
-  { path: 'grupo-cadastro', component: GrupoCadastroComponent, canActivate: [AuthGuard]},
-  { path: 'design', component: DesignComponent, canActivate: [AuthGuard]},
-  { path: 'preview', component: PreviewComponent, canActivate: [AuthGuard]},
-  { path: 'preview-cliente', component: PreviewClienteComponent, canActivate: [AuthGuard]},
-  { path: 'listagem', component: ListagemComponent, canActivate: [AuthGuard]},
-  { path: 'vinculo-tenant/:id', component: VinculoTenantComponent, canActivate: [AuthGuard]},
+  { path: 'cadastro', component: CadastroComponent, canActivate: [AuthGuard, SuporteGuard]},
+  { path: 'grupo-cadastro', component: GrupoCadastroComponent, canActivate: [AuthGuard, SuporteGuard]},
+  { path: 'design', component: DesignComponent, canActivate: [AuthGuard, SuporteGuard]},
+  { path: 'preview', component: PreviewComponent, canActivate: [AuthGuard, SuporteGuard]},
+  { path: 'preview-cliente', component: PreviewClienteComponent, canActivate: [AuthGuard, ClienteGuard]},
+  { path: 'listagem', component: ListagemComponent, canActivate: [AuthGuard, SuporteGuard]},
+  { path: 'vinculo-tenant/:id', component: VinculoTenantComponent, canActivate: [AuthGuard, SuporteGuard]},
   { path: '**', component: HomeComponent, canActivate: [AuthGuard]},
 ];
 

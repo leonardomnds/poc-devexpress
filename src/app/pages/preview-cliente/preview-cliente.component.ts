@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./preview-cliente.component.scss']
 })
 export class PreviewClienteComponent implements OnInit {
-  host = environment.devexpress;
+  host = environment.devexpressUrl;
   endpoint = '/DXXRDV';
   form: FormGroup;
   reportItems: any[];
