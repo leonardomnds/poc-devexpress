@@ -39,7 +39,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   private handleError401(request: HttpRequest<any>, response: HttpErrorResponse, next: HttpHandler): Observable<any> {
-    const isAuthEndpoint = request.url.includes(this.authService.loginUrl);
+    const isAuthEndpoint = request.url.includes(this.authService.backofficeLoginUrl) || request.url.includes(this.authService.eugestorLoginUrl);
 
     if (isAuthEndpoint || !this.authService.getToken()) {
       return throwError(() => response);

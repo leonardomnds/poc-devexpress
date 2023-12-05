@@ -12,7 +12,7 @@ import { HttpParams } from '@angular/common/http';
   styleUrls: ['./design.component.scss']
 })
 export class DesignComponent implements OnInit {
-  host = environment.devexpress;
+  host = environment.devexpressUrl;
   form: FormGroup;
   reportUrl: string;
   reportItems: any[];

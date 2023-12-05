@@ -7,11 +7,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ContaService {
-  urlbase = environment.api + 'api/';
+
+  readonly path = `${environment.reportsApiUrl}/contas`
 
   constructor(private http: HttpClient) { }
 
   getContas(): Observable<any> {
-    return this.http.get(this.urlbase + 'contas?&OrdenarPor=nome');
+    return this.http.get(this.path, { params: { OrdenarPor: 'nome' } });
   }
 }

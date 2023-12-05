@@ -7,6 +7,10 @@ body {
   font-family: 'Arial', sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .nav-btn {
   padding: 10px 20px;
   border: none;

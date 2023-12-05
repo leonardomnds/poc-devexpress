@@ -7,53 +7,40 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class RelatorioService {
-  urlbase = environment.api + 'api/';
+
+  readonly path = `${environment.reportsApiUrl}/relatorios`
 
   constructor(private http: HttpClient) { }
 
   getRelatorios(): Observable<any> {
-    return this.http.get(this.urlbase + 'relatorios?ExibirInativos=true&OrdenarPor=nome');
+    return this.http.get(this.path, { params: { ExibirInativos: true, OrdenarPor: 'nome' } });
   }
 
   getRelatoriosPorTenant(tenant: string): Observable<any> {
-    return this.http.get(this.urlbase + 'relatorios/tenant?ExibirInativos=false&OrdenarPor=nome&Tenant=' + tenant);
+    return this.http.get(`${this.path}/tenant`, { params: { ExibirInativos: false, OrdenarPor: 'nome', Tenant: tenant } });
   }
 
   getRelatorio(id: number): Observable<any> {
-    return this.http.get(this.urlbase + `relatorios/${id}`);
+    return this.http.get(`${this.path}/${id}`);
   }
 
   salvarRelatorio(nome: string, descricao: string, tenant: string, grupoRelatorioId: number): Observable<any> {
-    return this.http.post(this.urlbase + 'relatorios', {
-      nome,
-      descricao,
-      tenant,
-      grupoRelatorioId
-    });
+    return this.http.post(this.path, { nome, descricao, tenant, grupoRelatorioId });
   }
 
   vincularTenantRelatorio(relatorioId: number, tenant: string): Observable<any> {
-    return this.http.put(this.urlbase + 'relatorios/vincular-tenant', {
-      relatorioId,
-      tenant
-    });
+    return this.http.put(`${this.path}/vincular-tenant`, { relatorioId, tenant });
   }
 
   desvincularTenantRelatorio(relatorioTenantId: number): Observable<any> {
-    return this.http.put(this.urlbase + 'relatorios/desvincular-tenant', {
-      relatorioTenantId
-    });
+    return this.http.put(`${this.path}/desvincular-tenant`, { relatorioTenantId });
   }
 
   liberarRelatorioClientes(relatorioId: number): Observable<any> {
-    return this.http.put(this.urlbase + 'relatorios/liberar-todos-clientes', {
-      relatorioId
-    });
+    return this.http.put(`${this.path}/liberar-todos-clientes`, { relatorioId });
   }
 
   removerLiberacaoRelatorioClientes(relatorioId: number): Observable<any> {
-    return this.http.put(this.urlbase + 'relatorios/remover-liberacao-todos-clientes', {
-      relatorioId
-    });
+    return this.http.put(`${this.path}/remover-liberacao-todos-clientes`, { relatorioId });
   }
 }

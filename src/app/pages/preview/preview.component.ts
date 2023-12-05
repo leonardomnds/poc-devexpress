@@ -12,7 +12,7 @@ import { HttpParams } from '@angular/common/http';
   styleUrls: ['./preview.component.scss']
 })
 export class PreviewComponent implements OnInit {
-  host = environment.devexpress;
+  host = environment.devexpressUrl;
   endpoint = '/DXXRDV';
   form: FormGroup;
   reportItems: any[];

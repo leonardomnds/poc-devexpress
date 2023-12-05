@@ -5,9 +5,23 @@
       <div class="input-group">
         <label for="email">E-mail</label>
         <input type="email" id="email" formControlName="email" class="custom-input">
+      </div>
 
+      <div class="input-group">
         <label for="senha">Senha</label>
         <input type="password" id="senha" formControlName="senha" class="custom-input">
+      </div>
+
+      <div class="input-group">
+        <label>Tipo de Login</label>
+        <div class="custom-radio">
+          <input type="radio" id="isCliente" formControlName="isSuporte" [value]="false">
+          <label for="isCliente">Entrar como cliente</label>
+        </div>
+        <div class="custom-radio">
+          <input type="radio" id="isSuporte" formControlName="isSuporte" [value]="true">
+          <label for="isSuporte">Entrar como suporte</label>
+        </div>
       </div>
 
       <button type="submit" class="nav-btn" [disabled]="isLoading">Logar</button>

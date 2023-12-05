@@ -33,13 +33,30 @@
         display: block;
       }
 
-      input,
+      input:not([type="radio"]),
       textarea {
         width: 100%;
         padding: 10px;
         margin-top: 10px;
         border: 1px solid #ccc;
         border-radius: 4px;
+      }
+
+      .custom-radio {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 6px;
+
+        input[type="radio"] {
+          margin: 0;
+          cursor: pointer;
+        }
+
+        label {
+          cursor: pointer;
+          font-size: 14px;
+        }
       }
     }
 

@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import 'devexpress-reporting/dx-richedit';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -17,5 +18,6 @@ import 'devexpress-reporting/dx-richedit';
   ]
 })
 export class HomeComponent {
+  constructor(public authService: AuthenticationService) {}
 }
 
