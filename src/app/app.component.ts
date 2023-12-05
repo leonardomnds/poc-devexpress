@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import 'devexpress-reporting/dx-richedit';
+import { translateDevexpressInterface } from './translations';
 
 @Component({
   selector: 'app-root',
@@ -16,4 +17,8 @@ import 'devexpress-reporting/dx-richedit';
     '../../node_modules/@devexpress/analytics-core/dist/css/dx-analytics.common.css',
   ]
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor() {
+    translateDevexpressInterface()
+  }
+}
