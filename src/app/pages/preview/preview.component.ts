@@ -41,7 +41,6 @@ export class PreviewComponent implements OnInit {
   abrirPreview() {
     if (this.form.valid) {
       let params = new HttpParams()
-        .set('IsSuporte', 'true') // Definindo IsSuporte como true
         .set('id', this.form.value.tenant.toString());
 
         this.reportUrl = params.toString();

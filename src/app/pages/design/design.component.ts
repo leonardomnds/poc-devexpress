@@ -38,7 +38,6 @@ export class DesignComponent implements OnInit {
     if (this.form.valid) {
       let params = new HttpParams()
       .set('IsDesign', 'true')
-      .set('IsSuporte', 'true')
       .set('id', this.form.value.report.toString());
       this.reportUrl = params.toString();
       this.showDesigner = true;

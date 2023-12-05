@@ -1,11 +1,12 @@
-const API_DOMAIN = 'localhost:7086';
+const API_DOMAIN = 'localhost:51775';
+const API_DOMAIN_BACKOFFICE = 'localhost:61553';
 
 export const environment = {
   production: false,
   domain: API_DOMAIN,
   devexpress: `https://${API_DOMAIN}`,
   api: `https://${API_DOMAIN}/`,
-  backoffice: `https://${API_DOMAIN}/api`
+  backoffice: `https://${API_DOMAIN_BACKOFFICE}/api`
 };
 
 /*
