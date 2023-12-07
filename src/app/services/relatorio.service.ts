@@ -16,6 +16,10 @@ export class RelatorioService {
     return this.http.get(this.path, { params: { ExibirInativos: true, OrdenarPor: 'nome' } });
   }
 
+  getRelatoriosCliente(): Observable<any> {
+    return this.http.get(`${this.path}/cliente`, { params: { ExibirInativos: true, OrdenarPor: 'nome' } });
+  }
+
   getRelatoriosPorTenant(tenant: string): Observable<any> {
     return this.http.get(`${this.path}/tenant`, { params: { ExibirInativos: false, OrdenarPor: 'nome', Tenant: tenant } });
   }
