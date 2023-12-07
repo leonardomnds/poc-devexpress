@@ -9,7 +9,7 @@
             <ul class="report-list">
                 <li *ngFor="let tenant of tenants">
                     <div class="report-item">
-                        <span>{{ tenant.tenant }}</span>
+                        <span>{{ tenant.cliente.tenant }}</span>
                         <div class="actions">
                             <button class="nav-btn nav-btn-back2"
                                 (click)="selecionarParaDesvinculo(tenant.id)">❌</button>
@@ -30,8 +30,17 @@
             <input type="checkbox" id="toggleTenantSelect" (change)="onCheckboxChange($event)" [(ngModel)]="checkbox">
             <label for="toggleTenantSelect">Todos os clientes</label>
         </div>
-        
-        <input type="text" [(ngModel)]="novaTenant" placeholder="Digite o nome da nova tenant" class="custom-input">
+
+        <form [formGroup]="form">
+            <div class="input-group">
+                <label for="report">Cliente</label>
+                <select id="report" formControlName="clientes" class="custom-input">
+                    <option value="">Selecione um ou mais clientes</option>
+                    <option *ngFor="let item of clientes" [value]="item.clienteId">{{ item.nome }}</option>
+                </select>
+            </div>
+        </form>
+
         <div class="actions">
             <button class="nav-btn" (click)="vincular()">Vincular</button>
             <button class="nav-btn nav-btn-back" (click)="voltarVinculo()">Voltar</button>

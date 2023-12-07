@@ -14,7 +14,7 @@
         <label for="tenant">Tenant do relatório</label>
         <select id="tenant" formControlName="tenant" class="custom-input" (change)="selecionarTenant()">
           <option value="">Selecione uma tenant</option>
-          <option *ngFor="let tenant of tenants" [value]="tenant.id">{{ tenant.tenant }}</option>
+          <option *ngFor="let tenant of tenants" [value]="tenant.id">{{ tenant.cliente.tenant }}</option>
         </select>
       </div>
 

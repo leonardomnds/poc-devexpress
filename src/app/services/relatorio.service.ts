@@ -24,12 +24,12 @@ export class RelatorioService {
     return this.http.get(`${this.path}/${id}`);
   }
 
-  salvarRelatorio(nome: string, descricao: string, tenant: string, grupoRelatorioId: number): Observable<any> {
-    return this.http.post(this.path, { nome, descricao, tenant, grupoRelatorioId });
+  salvarRelatorio(nome: string, descricao: string, clienteId: number, grupoRelatorioId: number, tipoPlano: number): Observable<any> {
+    return this.http.post(this.path, { nome, descricao, clienteId, grupoRelatorioId, tipoPlano });
   }
 
-  vincularTenantRelatorio(relatorioId: number, tenant: string): Observable<any> {
-    return this.http.put(`${this.path}/vincular-tenant`, { relatorioId, tenant });
+  vincularTenantRelatorio(relatorioId: number, clienteId: number): Observable<any> {
+    return this.http.put(`${this.path}/vincular-tenant`, { relatorioId, clienteId });
   }
 
   desvincularTenantRelatorio(relatorioTenantId: number): Observable<any> {

@@ -19,6 +19,7 @@ import { VinculoTenantComponent } from './pages/vinculo-tenant/vinculo-tenant.co
 import { environment } from 'src/environments/environment';
 import { GrupoCadastroComponent } from './pages/grupo-cadastro/grupo-cadastro.component';
 import { PreviewClienteComponent } from './pages/preview-cliente/preview-cliente.component';
+import { ClienteCadastroComponent } from './pages/cliente-cadastro/cliente-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PreviewClienteComponent } from './pages/preview-cliente/preview-cliente
     ListagemComponent,
     VinculoTenantComponent,
     GrupoCadastroComponent,
-    PreviewClienteComponent
+    PreviewClienteComponent,
+    ClienteCadastroComponent
   ],
   imports: [
     AppRoutingModule,

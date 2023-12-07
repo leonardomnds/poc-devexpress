@@ -38,7 +38,6 @@ export class AuthenticationService {
     const token = this.localStorageService.get('token');
 
     if (token) {
-      console.log('colocou token')
       fetchSetup.fetchSettings = { headers: { Authorization: `Bearer ${token}` } };
     }
 

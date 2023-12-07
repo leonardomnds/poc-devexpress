@@ -15,10 +15,10 @@
         <input type="text" id="tituloRelatorio" formControlName="tituloRelatorio" class="custom-input">
 
         <div class="input-group">
-          <label for="report">Tenant</label>
-          <select id="report" formControlName="tenant" class="custom-input">
-            <option value="">Selecione uma ou mais tenants</option>
-            <option *ngFor="let item of contas" [value]="item.tenant">{{ item.tenant }}</option>
+          <label for="report">Cliente</label>
+          <select id="report" formControlName="clientes" class="custom-input">
+            <option value="">Selecione um ou mais clientes</option>
+            <option *ngFor="let item of clientes" [value]="item.clienteId">{{ item.nome }}</option>
           </select>
         </div>
 
@@ -30,6 +30,16 @@
           </select>
         </div>
       </div>
+
+      <div class="input-group">
+        <label for="tipoPlano">Tipo de Plano</label>
+        <select id="tipoPlano" formControlName="tipoPlano" class="custom-input">
+            <option value="1">Essential</option>
+            <option value="2">Pro Lite</option>
+            <option value="3">Professional Plus</option>
+            <option value="4">Premium</option>
+        </select>
+    </div>
 
       <div class="actions">
         <button type="submit" class="nav-btn">Salvar</button>

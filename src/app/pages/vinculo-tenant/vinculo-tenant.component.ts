@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ClienteService } from 'src/app/services/cliente.service';
 import { RelatorioService } from 'src/app/services/relatorio.service';
 
 @Component({
@@ -13,10 +15,19 @@ export class VinculoTenantComponent implements OnInit {
   tenants: any[] = [];
   exibirInputVinculo: boolean = false;
   novaTenant: string = '';
+  clientes: any[] = [];
+  form: FormGroup;
 
-  constructor(private relatorioService: RelatorioService,
+  constructor(
+    private relatorioService: RelatorioService,
+    private clienteService: ClienteService,
+    private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router) {
+    this.form = this.fb.group({
+      clientes: null
+    });
+  }
 
   ngOnInit(): void {
     this.relatorioId = +this.route.snapshot.paramMap.get('id');
@@ -31,17 +42,19 @@ export class VinculoTenantComponent implements OnInit {
   }
 
   vincularNovaTenant(): void {
+    this.clienteService.getClientes().subscribe(items => {
+      this.clientes = items.data;
+    });
     this.exibirInputVinculo = true;
   }
 
   vincular(): void {
-    if (this.novaTenant) {
-      this.relatorioService.vincularTenantRelatorio(this.relatorioId, this.novaTenant).subscribe(() => {
-        this.carregarTenants();
-      });
-      this.exibirInputVinculo = false;
-      this.novaTenant = '';
-    }
+    const { clientes } = this.form.value;
+    this.relatorioService.vincularTenantRelatorio(this.relatorioId, clientes).subscribe(() => {
+      this.carregarTenants();
+    });
+    this.exibirInputVinculo = false;
+    this.novaTenant = '';
   }
 
   voltarVinculo() {

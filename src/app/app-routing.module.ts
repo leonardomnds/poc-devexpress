@@ -10,12 +10,14 @@ import { ListagemComponent } from './pages/listagem/listagem.component';
 import { VinculoTenantComponent } from './pages/vinculo-tenant/vinculo-tenant.component';
 import { GrupoCadastroComponent } from './pages/grupo-cadastro/grupo-cadastro.component';
 import { PreviewClienteComponent } from './pages/preview-cliente/preview-cliente.component';
+import { ClienteCadastroComponent } from './pages/cliente-cadastro/cliente-cadastro.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   { path: 'cadastro', component: CadastroComponent, canActivate: [AuthGuard, SuporteGuard]},
   { path: 'grupo-cadastro', component: GrupoCadastroComponent, canActivate: [AuthGuard, SuporteGuard]},
+  { path: 'cliente-cadastro', component: ClienteCadastroComponent, canActivate: [AuthGuard, SuporteGuard]},
   { path: 'design', component: DesignComponent, canActivate: [AuthGuard, SuporteGuard]},
   { path: 'preview', component: PreviewComponent, canActivate: [AuthGuard, SuporteGuard]},
   { path: 'preview-cliente', component: PreviewClienteComponent, canActivate: [AuthGuard, ClienteGuard]},

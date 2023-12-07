@@ -1,0 +1,45 @@
+<div class="cadastro-container">
+    <div class="form-content">
+        <h2>Cadastro de Cliente</h2>
+        <p>
+            Utilize este formulário para salvar a configuração de um novo cliente.
+            Você pode especificar um nome, o cpf ou cnpj do cliente e a sua tenant.
+            Essas informações são importantes para gerar relatórios dinâmicos no DevExpress.
+        </p>
+        <form [formGroup]="form" (ngSubmit)="criarCliente()">
+            <div class="input-group">
+                <label for="descricao">Nome do cliente</label>
+                <input type="text" id="report" formControlName="nome" class="custom-input">
+            </div>
+
+            <div class="input-group">
+                <label for="descricao">CPF/CNPJ do cliente</label>
+                <input type="text" id="report" formControlName="cpfcnpj" class="custom-input">
+            </div>
+
+            <div class="input-group">
+                <label for="descricao">Tenant do cliente</label>
+                <input type="text" id="report" formControlName="tenant" class="custom-input">
+            </div>
+
+            <div class="input-group">
+                <label for="tipoPlano">Tipo de Plano</label>
+                <select id="tipoPlano" formControlName="tipoPlano" class="custom-input">
+                    <option value="1">Essential</option>
+                    <option value="2">Pro Lite</option>
+                    <option value="3">Professional Plus</option>
+                    <option value="4">Premium</option>
+                </select>
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="nav-btn">Salvar</button>
+                <button type="button" (click)="voltar()" class="nav-btn-back">Voltar</button>
+            </div>
+        </form>
+        <div class="info-text">
+            <p>Salvar um cadastro de cliente permite a geração de documentos e análises personalizadas com o
+                DevExpress.</p>
+        </div>
+    </div>
+</div>
