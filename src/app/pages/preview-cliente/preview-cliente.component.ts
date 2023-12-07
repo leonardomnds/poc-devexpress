@@ -32,7 +32,7 @@ export class PreviewClienteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.relatorioService.getRelatorios().subscribe(items => {
+    this.relatorioService.getRelatoriosCliente().subscribe(items => {
       this.reportItems = items.data.lista;
     });
   }
